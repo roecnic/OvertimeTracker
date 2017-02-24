@@ -28,12 +28,12 @@
             this.lbxCurrentOvertime = new System.Windows.Forms.ListBox();
             this.lbxTakenOvertime = new System.Windows.Forms.ListBox();
             this.gbxNewOvertime = new System.Windows.Forms.GroupBox();
-            this.lblNewOvertimeEndTime = new System.Windows.Forms.Label();
-            this.lblNewOvertimeDate = new System.Windows.Forms.Label();
-            this.lblNewOvertimeStartTime = new System.Windows.Forms.Label();
-            this.tbxNewOvertimeDate = new System.Windows.Forms.TextBox();
-            this.tbxNewOvertimeStartTime = new System.Windows.Forms.TextBox();
             this.tbxNewOvertimeEndTime = new System.Windows.Forms.TextBox();
+            this.tbxNewOvertimeStartTime = new System.Windows.Forms.TextBox();
+            this.tbxNewOvertimeDate = new System.Windows.Forms.TextBox();
+            this.lblNewOvertimeStartTime = new System.Windows.Forms.Label();
+            this.lblNewOvertimeDate = new System.Windows.Forms.Label();
+            this.lblNewOvertimeEndTime = new System.Windows.Forms.Label();
             this.gbxTakeOvertime = new System.Windows.Forms.GroupBox();
             this.tbxTakeOvertimeEndTime = new System.Windows.Forms.TextBox();
             this.tbxTakeOvertimeStartTime = new System.Windows.Forms.TextBox();
@@ -43,6 +43,8 @@
             this.lblTakeOvertimeEndTime = new System.Windows.Forms.Label();
             this.lblAvailableOvertime = new System.Windows.Forms.Label();
             this.tbxAvailableOvertime = new System.Windows.Forms.TextBox();
+            this.btnAddOvertime = new System.Windows.Forms.Button();
+            this.btnTakeOvertime = new System.Windows.Forms.Button();
             this.gbxNewOvertime.SuspendLayout();
             this.gbxTakeOvertime.SuspendLayout();
             this.SuspendLayout();
@@ -70,7 +72,7 @@
             this.lbxCurrentOvertime.FormattingEnabled = true;
             this.lbxCurrentOvertime.Location = new System.Drawing.Point(16, 30);
             this.lbxCurrentOvertime.Name = "lbxCurrentOvertime";
-            this.lbxCurrentOvertime.Size = new System.Drawing.Size(218, 290);
+            this.lbxCurrentOvertime.Size = new System.Drawing.Size(218, 316);
             this.lbxCurrentOvertime.TabIndex = 2;
             // 
             // lbxTakenOvertime
@@ -78,11 +80,12 @@
             this.lbxTakenOvertime.FormattingEnabled = true;
             this.lbxTakenOvertime.Location = new System.Drawing.Point(273, 30);
             this.lbxTakenOvertime.Name = "lbxTakenOvertime";
-            this.lbxTakenOvertime.Size = new System.Drawing.Size(218, 290);
+            this.lbxTakenOvertime.Size = new System.Drawing.Size(218, 316);
             this.lbxTakenOvertime.TabIndex = 3;
             // 
             // gbxNewOvertime
             // 
+            this.gbxNewOvertime.Controls.Add(this.btnAddOvertime);
             this.gbxNewOvertime.Controls.Add(this.tbxNewOvertimeEndTime);
             this.gbxNewOvertime.Controls.Add(this.tbxNewOvertimeStartTime);
             this.gbxNewOvertime.Controls.Add(this.tbxNewOvertimeDate);
@@ -91,28 +94,34 @@
             this.gbxNewOvertime.Controls.Add(this.lblNewOvertimeEndTime);
             this.gbxNewOvertime.Location = new System.Drawing.Point(508, 13);
             this.gbxNewOvertime.Name = "gbxNewOvertime";
-            this.gbxNewOvertime.Size = new System.Drawing.Size(154, 117);
+            this.gbxNewOvertime.Size = new System.Drawing.Size(154, 133);
             this.gbxNewOvertime.TabIndex = 4;
             this.gbxNewOvertime.TabStop = false;
             this.gbxNewOvertime.Text = "Neue Überstunden";
             // 
-            // lblNewOvertimeEndTime
+            // tbxNewOvertimeEndTime
             // 
-            this.lblNewOvertimeEndTime.AutoSize = true;
-            this.lblNewOvertimeEndTime.Location = new System.Drawing.Point(82, 57);
-            this.lblNewOvertimeEndTime.Name = "lblNewOvertimeEndTime";
-            this.lblNewOvertimeEndTime.Size = new System.Drawing.Size(24, 13);
-            this.lblNewOvertimeEndTime.TabIndex = 0;
-            this.lblNewOvertimeEndTime.Text = "Bis:";
+            this.tbxNewOvertimeEndTime.Location = new System.Drawing.Point(85, 73);
+            this.tbxNewOvertimeEndTime.Name = "tbxNewOvertimeEndTime";
+            this.tbxNewOvertimeEndTime.Size = new System.Drawing.Size(60, 20);
+            this.tbxNewOvertimeEndTime.TabIndex = 5;
+            this.tbxNewOvertimeEndTime.Text = "HH:MM";
             // 
-            // lblNewOvertimeDate
+            // tbxNewOvertimeStartTime
             // 
-            this.lblNewOvertimeDate.AutoSize = true;
-            this.lblNewOvertimeDate.Location = new System.Drawing.Point(6, 28);
-            this.lblNewOvertimeDate.Name = "lblNewOvertimeDate";
-            this.lblNewOvertimeDate.Size = new System.Drawing.Size(41, 13);
-            this.lblNewOvertimeDate.TabIndex = 1;
-            this.lblNewOvertimeDate.Text = "Datum:";
+            this.tbxNewOvertimeStartTime.Location = new System.Drawing.Point(11, 73);
+            this.tbxNewOvertimeStartTime.Name = "tbxNewOvertimeStartTime";
+            this.tbxNewOvertimeStartTime.Size = new System.Drawing.Size(60, 20);
+            this.tbxNewOvertimeStartTime.TabIndex = 4;
+            this.tbxNewOvertimeStartTime.Text = "HH:MM";
+            // 
+            // tbxNewOvertimeDate
+            // 
+            this.tbxNewOvertimeDate.Location = new System.Drawing.Point(53, 25);
+            this.tbxNewOvertimeDate.Name = "tbxNewOvertimeDate";
+            this.tbxNewOvertimeDate.Size = new System.Drawing.Size(90, 20);
+            this.tbxNewOvertimeDate.TabIndex = 3;
+            this.tbxNewOvertimeDate.Text = "DD.MM.YYYY";
             // 
             // lblNewOvertimeStartTime
             // 
@@ -123,41 +132,36 @@
             this.lblNewOvertimeStartTime.TabIndex = 2;
             this.lblNewOvertimeStartTime.Text = "Von:";
             // 
-            // tbxNewOvertimeDate
+            // lblNewOvertimeDate
             // 
-            this.tbxNewOvertimeDate.Location = new System.Drawing.Point(53, 25);
-            this.tbxNewOvertimeDate.Name = "tbxNewOvertimeDate";
-            this.tbxNewOvertimeDate.Size = new System.Drawing.Size(90, 20);
-            this.tbxNewOvertimeDate.TabIndex = 3;
-            this.tbxNewOvertimeDate.Text = "DD.MM.YYYY";
+            this.lblNewOvertimeDate.AutoSize = true;
+            this.lblNewOvertimeDate.Location = new System.Drawing.Point(6, 28);
+            this.lblNewOvertimeDate.Name = "lblNewOvertimeDate";
+            this.lblNewOvertimeDate.Size = new System.Drawing.Size(41, 13);
+            this.lblNewOvertimeDate.TabIndex = 1;
+            this.lblNewOvertimeDate.Text = "Datum:";
             // 
-            // tbxNewOvertimeStartTime
+            // lblNewOvertimeEndTime
             // 
-            this.tbxNewOvertimeStartTime.Location = new System.Drawing.Point(11, 73);
-            this.tbxNewOvertimeStartTime.Name = "tbxNewOvertimeStartTime";
-            this.tbxNewOvertimeStartTime.Size = new System.Drawing.Size(60, 20);
-            this.tbxNewOvertimeStartTime.TabIndex = 4;
-            this.tbxNewOvertimeStartTime.Text = "HH:MM";
-            // 
-            // tbxNewOvertimeEndTime
-            // 
-            this.tbxNewOvertimeEndTime.Location = new System.Drawing.Point(85, 73);
-            this.tbxNewOvertimeEndTime.Name = "tbxNewOvertimeEndTime";
-            this.tbxNewOvertimeEndTime.Size = new System.Drawing.Size(60, 20);
-            this.tbxNewOvertimeEndTime.TabIndex = 5;
-            this.tbxNewOvertimeEndTime.Text = "HH:MM";
+            this.lblNewOvertimeEndTime.AutoSize = true;
+            this.lblNewOvertimeEndTime.Location = new System.Drawing.Point(82, 57);
+            this.lblNewOvertimeEndTime.Name = "lblNewOvertimeEndTime";
+            this.lblNewOvertimeEndTime.Size = new System.Drawing.Size(24, 13);
+            this.lblNewOvertimeEndTime.TabIndex = 0;
+            this.lblNewOvertimeEndTime.Text = "Bis:";
             // 
             // gbxTakeOvertime
             // 
+            this.gbxTakeOvertime.Controls.Add(this.btnTakeOvertime);
             this.gbxTakeOvertime.Controls.Add(this.tbxTakeOvertimeEndTime);
             this.gbxTakeOvertime.Controls.Add(this.tbxTakeOvertimeStartTime);
             this.gbxTakeOvertime.Controls.Add(this.tbxTakeOvertimeDate);
             this.gbxTakeOvertime.Controls.Add(this.lblTakeOvertimeStartTime);
             this.gbxTakeOvertime.Controls.Add(this.lblTakeOvertimeDate);
             this.gbxTakeOvertime.Controls.Add(this.lblTakeOvertimeEndTime);
-            this.gbxTakeOvertime.Location = new System.Drawing.Point(508, 151);
+            this.gbxTakeOvertime.Location = new System.Drawing.Point(508, 161);
             this.gbxTakeOvertime.Name = "gbxTakeOvertime";
-            this.gbxTakeOvertime.Size = new System.Drawing.Size(154, 117);
+            this.gbxTakeOvertime.Size = new System.Drawing.Size(154, 129);
             this.gbxTakeOvertime.TabIndex = 6;
             this.gbxTakeOvertime.TabStop = false;
             this.gbxTakeOvertime.Text = "Überstunden nehmen";
@@ -216,7 +220,7 @@
             // lblAvailableOvertime
             // 
             this.lblAvailableOvertime.AutoSize = true;
-            this.lblAvailableOvertime.Location = new System.Drawing.Point(505, 284);
+            this.lblAvailableOvertime.Location = new System.Drawing.Point(505, 309);
             this.lblAvailableOvertime.Name = "lblAvailableOvertime";
             this.lblAvailableOvertime.Size = new System.Drawing.Size(148, 13);
             this.lblAvailableOvertime.TabIndex = 7;
@@ -224,17 +228,35 @@
             // 
             // tbxAvailableOvertime
             // 
-            this.tbxAvailableOvertime.Location = new System.Drawing.Point(508, 300);
+            this.tbxAvailableOvertime.Location = new System.Drawing.Point(508, 325);
             this.tbxAvailableOvertime.Name = "tbxAvailableOvertime";
             this.tbxAvailableOvertime.ReadOnly = true;
             this.tbxAvailableOvertime.Size = new System.Drawing.Size(154, 20);
             this.tbxAvailableOvertime.TabIndex = 8;
             // 
+            // btnAddOvertime
+            // 
+            this.btnAddOvertime.Location = new System.Drawing.Point(11, 99);
+            this.btnAddOvertime.Name = "btnAddOvertime";
+            this.btnAddOvertime.Size = new System.Drawing.Size(137, 23);
+            this.btnAddOvertime.TabIndex = 6;
+            this.btnAddOvertime.Text = "Stunden hinzufügen";
+            this.btnAddOvertime.UseVisualStyleBackColor = true;
+            // 
+            // btnTakeOvertime
+            // 
+            this.btnTakeOvertime.Location = new System.Drawing.Point(11, 99);
+            this.btnTakeOvertime.Name = "btnTakeOvertime";
+            this.btnTakeOvertime.Size = new System.Drawing.Size(137, 23);
+            this.btnTakeOvertime.TabIndex = 7;
+            this.btnTakeOvertime.Text = "Stunden nehmen";
+            this.btnTakeOvertime.UseVisualStyleBackColor = true;
+            // 
             // Overtime_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(686, 334);
+            this.ClientSize = new System.Drawing.Size(686, 365);
             this.Controls.Add(this.tbxAvailableOvertime);
             this.Controls.Add(this.lblAvailableOvertime);
             this.Controls.Add(this.gbxTakeOvertime);
@@ -276,6 +298,8 @@
         private System.Windows.Forms.Label lblTakeOvertimeEndTime;
         private System.Windows.Forms.Label lblAvailableOvertime;
         private System.Windows.Forms.TextBox tbxAvailableOvertime;
+        private System.Windows.Forms.Button btnAddOvertime;
+        private System.Windows.Forms.Button btnTakeOvertime;
     }
 }
 
