@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace OvertimeTracker {
-    public partial class Form1 : Form {
-        public Form1 () {
+    public partial class Overtime_Form : Form {
+        public Overtime_Form () {
             InitializeComponent();
         }
     }
