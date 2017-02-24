@@ -28,6 +28,7 @@
             this.lbxCurrentOvertime = new System.Windows.Forms.ListBox();
             this.lbxTakenOvertime = new System.Windows.Forms.ListBox();
             this.gbxNewOvertime = new System.Windows.Forms.GroupBox();
+            this.btnAddOvertime = new System.Windows.Forms.Button();
             this.tbxNewOvertimeEndTime = new System.Windows.Forms.TextBox();
             this.tbxNewOvertimeStartTime = new System.Windows.Forms.TextBox();
             this.tbxNewOvertimeDate = new System.Windows.Forms.TextBox();
@@ -35,6 +36,7 @@
             this.lblNewOvertimeDate = new System.Windows.Forms.Label();
             this.lblNewOvertimeEndTime = new System.Windows.Forms.Label();
             this.gbxTakeOvertime = new System.Windows.Forms.GroupBox();
+            this.btnTakeOvertime = new System.Windows.Forms.Button();
             this.tbxTakeOvertimeEndTime = new System.Windows.Forms.TextBox();
             this.tbxTakeOvertimeStartTime = new System.Windows.Forms.TextBox();
             this.tbxTakeOvertimeDate = new System.Windows.Forms.TextBox();
@@ -43,8 +45,6 @@
             this.lblTakeOvertimeEndTime = new System.Windows.Forms.Label();
             this.lblAvailableOvertime = new System.Windows.Forms.Label();
             this.tbxAvailableOvertime = new System.Windows.Forms.TextBox();
-            this.btnAddOvertime = new System.Windows.Forms.Button();
-            this.btnTakeOvertime = new System.Windows.Forms.Button();
             this.gbxNewOvertime.SuspendLayout();
             this.gbxTakeOvertime.SuspendLayout();
             this.SuspendLayout();
@@ -98,6 +98,16 @@
             this.gbxNewOvertime.TabIndex = 4;
             this.gbxNewOvertime.TabStop = false;
             this.gbxNewOvertime.Text = "Neue Überstunden";
+            // 
+            // btnAddOvertime
+            // 
+            this.btnAddOvertime.Location = new System.Drawing.Point(11, 99);
+            this.btnAddOvertime.Name = "btnAddOvertime";
+            this.btnAddOvertime.Size = new System.Drawing.Size(137, 23);
+            this.btnAddOvertime.TabIndex = 6;
+            this.btnAddOvertime.Text = "Stunden hinzufügen";
+            this.btnAddOvertime.UseVisualStyleBackColor = true;
+            this.btnAddOvertime.Click += new System.EventHandler(this.btnAddOvertime_Click);
             // 
             // tbxNewOvertimeEndTime
             // 
@@ -166,6 +176,15 @@
             this.gbxTakeOvertime.TabStop = false;
             this.gbxTakeOvertime.Text = "Überstunden nehmen";
             // 
+            // btnTakeOvertime
+            // 
+            this.btnTakeOvertime.Location = new System.Drawing.Point(11, 99);
+            this.btnTakeOvertime.Name = "btnTakeOvertime";
+            this.btnTakeOvertime.Size = new System.Drawing.Size(137, 23);
+            this.btnTakeOvertime.TabIndex = 7;
+            this.btnTakeOvertime.Text = "Stunden nehmen";
+            this.btnTakeOvertime.UseVisualStyleBackColor = true;
+            // 
             // tbxTakeOvertimeEndTime
             // 
             this.tbxTakeOvertimeEndTime.Location = new System.Drawing.Point(85, 73);
@@ -181,6 +200,7 @@
             this.tbxTakeOvertimeStartTime.Size = new System.Drawing.Size(60, 20);
             this.tbxTakeOvertimeStartTime.TabIndex = 4;
             this.tbxTakeOvertimeStartTime.Text = "HH:MM";
+            this.tbxTakeOvertimeStartTime.Click += new System.EventHandler(this.tbxTakeOvertimeStartTime_Click);
             // 
             // tbxTakeOvertimeDate
             // 
@@ -233,24 +253,7 @@
             this.tbxAvailableOvertime.ReadOnly = true;
             this.tbxAvailableOvertime.Size = new System.Drawing.Size(154, 20);
             this.tbxAvailableOvertime.TabIndex = 8;
-            // 
-            // btnAddOvertime
-            // 
-            this.btnAddOvertime.Location = new System.Drawing.Point(11, 99);
-            this.btnAddOvertime.Name = "btnAddOvertime";
-            this.btnAddOvertime.Size = new System.Drawing.Size(137, 23);
-            this.btnAddOvertime.TabIndex = 6;
-            this.btnAddOvertime.Text = "Stunden hinzufügen";
-            this.btnAddOvertime.UseVisualStyleBackColor = true;
-            // 
-            // btnTakeOvertime
-            // 
-            this.btnTakeOvertime.Location = new System.Drawing.Point(11, 99);
-            this.btnTakeOvertime.Name = "btnTakeOvertime";
-            this.btnTakeOvertime.Size = new System.Drawing.Size(137, 23);
-            this.btnTakeOvertime.TabIndex = 7;
-            this.btnTakeOvertime.Text = "Stunden nehmen";
-            this.btnTakeOvertime.UseVisualStyleBackColor = true;
+            this.tbxAvailableOvertime.Text = "0";
             // 
             // Overtime_Form
             // 
