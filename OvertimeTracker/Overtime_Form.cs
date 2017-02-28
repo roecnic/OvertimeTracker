@@ -49,28 +49,45 @@ namespace OvertimeTracker {
                     var endTimeHour = Convert.ToInt32(tbxNewOvertimeEndTime.Text.Substring(0, 2));
                     var endTimeMinute = Convert.ToInt32(tbxNewOvertimeEndTime.Text.Substring(3));
 
+                    var negativeOvertime = false;
+
+                    if (startTimeHour > endTimeHour)
+                        negativeOvertime = true;
+                    else if (startTimeHour == endTimeHour && startTimeMinute > endTimeMinute)
+                        negativeOvertime = true;
+                    else if (startTimeHour == endTimeHour && startTimeMinute == endTimeMinute)
+                        negativeOvertime = true;
+
                     var dateString = tbxNewOvertimeDate.Text;
 
-                    var durationHour = endTimeHour - startTimeHour;
-                    double durationMinute = 0;
+                    if (!negativeOvertime) {
+                        var durationHour = endTimeHour - startTimeHour;
+                        double durationMinute = 0;
 
-                    if (endTimeMinute < startTimeMinute) {
-                        durationMinute = startTimeMinute - endTimeMinute;
-                        durationMinute = 60 - durationMinute;
+                        if (endTimeMinute < startTimeMinute) {
+                            durationMinute = startTimeMinute - endTimeMinute;
+                            durationMinute = 60 - durationMinute;
+                        } else
+                            durationMinute = endTimeMinute - startTimeMinute;
+
+                        if (durationMinute > 0 && durationMinute <= 30 && (durationHour > 0 && durationMinute <= 30))
+                            durationMinute = 30;
+                        else if (durationHour == 0 && durationMinute < 30) {
+                            MessageBox.Show("Weniger als 30 Minuten werden nicht als Überstunden gewertet", "Hinweis", MessageBoxButtons.OK);
+                            negativeOvertime = true;
+                        } else {
+                            durationHour++;
+                            durationMinute = 0;
+                        }
+
+                        if (!negativeOvertime) {
+                            lbxCurrentOvertime.Items.Add(durationHour + "." + durationMinute + '\t' + tbxNewOvertimeDate.Text);
+
+                            availableOvertime += (durationHour * 60) + durationMinute;
+                            RefreshEntries();
+                        }
                     } else
-                        durationMinute = endTimeMinute - startTimeMinute;
-
-                    if (durationMinute > 0 && durationMinute <= 30)
-                        durationMinute = 30;
-                    else {
-                        durationHour++;
-                        durationMinute = 0;
-                    }
-
-                    lbxCurrentOvertime.Items.Add(durationHour + "." + durationMinute + '\t' + tbxNewOvertimeDate.Text);
-
-                    availableOvertime += (durationHour * 60) + durationMinute;
-                    RefreshEntries();
+                        MessageBox.Show("Negative Überstunden können nicht eingetragen werden.", "Hinweis", MessageBoxButtons.OK);
                 }
             }
             catch (FormatException) {
