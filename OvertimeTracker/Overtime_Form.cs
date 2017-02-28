@@ -62,28 +62,33 @@ namespace OvertimeTracker {
 
                     if (!negativeOvertime) {
                         var durationHour = endTimeHour - startTimeHour;
-                        double durationMinute = 0;
+                        var durationMinute = durationHour * 60;
 
-                        if (endTimeMinute < startTimeMinute) {
-                            durationMinute = startTimeMinute - endTimeMinute;
-                            durationMinute = 60 - durationMinute;
-                        } else
-                            durationMinute = endTimeMinute - startTimeMinute;
+                        if (startTimeMinute > endTimeMinute) {
+                            durationMinute += 60 - (startTimeMinute - endTimeMinute);
+                            durationMinute -= 60;
+                        } else if (startTimeMinute < endTimeMinute)
+                            durationMinute += endTimeMinute - startTimeMinute;
+                        else if (startTimeMinute == endTimeMinute)
+                            durationMinute += 0;
 
-                        if (durationMinute > 0 && durationMinute <= 30 && (durationHour > 0 && durationMinute <= 30))
-                            durationMinute = 30;
-                        else if (durationHour == 0 && durationMinute < 30) {
+
+                        if (durationMinute < 30) {
                             MessageBox.Show("Weniger als 30 Minuten werden nicht als Überstunden gewertet", "Hinweis", MessageBoxButtons.OK);
                             negativeOvertime = true;
-                        } else {
-                            durationHour++;
-                            durationMinute = 0;
                         }
 
                         if (!negativeOvertime) {
-                            lbxCurrentOvertime.Items.Add(durationHour + "." + durationMinute + '\t' + tbxNewOvertimeDate.Text);
+                            availableOvertime += durationMinute;
+                            durationHour = durationMinute / 60;
+                            if ((durationMinute % 60) <= 30)
+                                durationMinute = 30;
+                            else if ((durationMinute % 60) > 30) {
+                                durationHour++;
+                                durationMinute = 0;
+                            }
 
-                            availableOvertime += (durationHour * 60) + durationMinute;
+                            lbxCurrentOvertime.Items.Add(durationHour + "." + durationMinute + '\t' + tbxNewOvertimeDate.Text);
                             RefreshEntries();
                         }
                     } else
