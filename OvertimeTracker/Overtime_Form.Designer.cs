@@ -116,6 +116,7 @@
             this.tbxNewOvertimeEndTime.Size = new System.Drawing.Size(60, 20);
             this.tbxNewOvertimeEndTime.TabIndex = 5;
             this.tbxNewOvertimeEndTime.Text = "HH:MM";
+            this.tbxNewOvertimeEndTime.Click += new System.EventHandler(this.tbxNewOvertimeEndTime_Click);
             // 
             // tbxNewOvertimeStartTime
             // 
@@ -124,6 +125,7 @@
             this.tbxNewOvertimeStartTime.Size = new System.Drawing.Size(60, 20);
             this.tbxNewOvertimeStartTime.TabIndex = 4;
             this.tbxNewOvertimeStartTime.Text = "HH:MM";
+            this.tbxNewOvertimeStartTime.Click += new System.EventHandler(this.tbxNewOvertimeStartTime_Click);
             // 
             // tbxNewOvertimeDate
             // 
@@ -184,6 +186,7 @@
             this.btnTakeOvertime.TabIndex = 7;
             this.btnTakeOvertime.Text = "Stunden nehmen";
             this.btnTakeOvertime.UseVisualStyleBackColor = true;
+            this.btnTakeOvertime.Click += new System.EventHandler(this.btnTakeOvertime_Click);
             // 
             // tbxTakeOvertimeEndTime
             // 
@@ -192,6 +195,7 @@
             this.tbxTakeOvertimeEndTime.Size = new System.Drawing.Size(60, 20);
             this.tbxTakeOvertimeEndTime.TabIndex = 5;
             this.tbxTakeOvertimeEndTime.Text = "HH:MM";
+            this.tbxTakeOvertimeEndTime.Click += new System.EventHandler(this.tbxTakeOvertimeEndTime_Click);
             // 
             // tbxTakeOvertimeStartTime
             // 

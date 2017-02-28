@@ -12,7 +12,7 @@ namespace OvertimeTracker {
     public partial class Overtime_Form : Form {
 
         private double availableOvertime = 0; //MINUTES
-        private bool[] clearTextBox = new bool[6];
+        private bool[] clearTextBox = new bool[4];
 
         public Overtime_Form () {
             InitializeComponent();
@@ -20,17 +20,17 @@ namespace OvertimeTracker {
             tbxTakeOvertimeDate.Text = ("" + DateTime.Today).Substring(0, 10);
 
             for (int i = 0; i < clearTextBox.Length; i++)
-                clearTextBox[i] = false;
+                clearTextBox[i] = true;
         }
 
         private void RefreshEntries () {
             tbxNewOvertimeDate.Text = ("" + DateTime.Today).Substring(0, 10);
-            tbxNewOvertimeEndTime.ResetText();
-            tbxNewOvertimeStartTime.ResetText();
+            tbxNewOvertimeEndTime.Text = "HH:MM";
+            tbxNewOvertimeStartTime.Text = "HH:MM";
 
             tbxTakeOvertimeDate.Text = ("" + DateTime.Today).Substring(0, 10);
-            tbxTakeOvertimeEndTime.ResetText();
-            tbxTakeOvertimeStartTime.ResetText();
+            tbxTakeOvertimeEndTime.Text = "HH:MM";
+            tbxTakeOvertimeStartTime.Text = "HH:MM";
 
             for (int i = 0; i < clearTextBox.Length; i++)
                 clearTextBox[i] = true;
@@ -117,10 +117,31 @@ namespace OvertimeTracker {
             }
         }
 
-        private void tbxTakeOvertimeStartTime_Click (object sender, EventArgs e) {
+        private void tbxNewOvertimeStartTime_Click (object sender, EventArgs e) {
             if (clearTextBox[0]) {
-                tbxNewOvertimeDate.Clear();
+                tbxNewOvertimeStartTime.Clear();
                 clearTextBox[0] = false;
+            }
+        }
+
+        private void tbxNewOvertimeEndTime_Click (object sender, EventArgs e) {
+            if (clearTextBox[1]) {
+                tbxNewOvertimeEndTime.Clear();
+                clearTextBox[1] = false;
+            }
+        }
+
+        private void tbxTakeOvertimeStartTime_Click (object sender, EventArgs e) {
+            if (clearTextBox[2]) {
+                tbxTakeOvertimeStartTime.Clear();
+                clearTextBox[2] = false;
+            }
+        }
+
+        private void tbxTakeOvertimeEndTime_Click (object sender, EventArgs e) {
+            if (clearTextBox[3]) {
+                tbxTakeOvertimeEndTime.Clear();
+                clearTextBox[3] = false;
             }
         }
     }
