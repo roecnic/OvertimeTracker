@@ -63,9 +63,9 @@
             this.lblTakenOvertime.AutoSize = true;
             this.lblTakenOvertime.Location = new System.Drawing.Point(270, 13);
             this.lblTakenOvertime.Name = "lblTakenOvertime";
-            this.lblTakenOvertime.Size = new System.Drawing.Size(134, 13);
+            this.lblTakenOvertime.Size = new System.Drawing.Size(122, 13);
             this.lblTakenOvertime.TabIndex = 1;
-            this.lblTakenOvertime.Text = "Genommene Überstunden:";
+            this.lblTakenOvertime.Text = "Genommener Ausgleich:";
             // 
             // lbxCurrentOvertime
             // 
@@ -176,7 +176,7 @@
             this.gbxTakeOvertime.Size = new System.Drawing.Size(154, 129);
             this.gbxTakeOvertime.TabIndex = 6;
             this.gbxTakeOvertime.TabStop = false;
-            this.gbxTakeOvertime.Text = "Überstunden nehmen";
+            this.gbxTakeOvertime.Text = "Ausgleich nehmen";
             // 
             // btnTakeOvertime
             // 
