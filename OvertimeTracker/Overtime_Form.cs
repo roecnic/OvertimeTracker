@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace OvertimeTracker {
@@ -79,7 +72,6 @@ namespace OvertimeTracker {
                         }
 
                         if (!negativeOvertime) {
-                            availableOvertime += durationMinute;
                             durationHour = durationMinute / 60;
                             if ((durationMinute % 60) <= 30)
                                 durationMinute = 30;
@@ -89,6 +81,8 @@ namespace OvertimeTracker {
                             }
 
                             lbxCurrentOvertime.Items.Add(durationHour + "." + durationMinute + '\t' + tbxNewOvertimeDate.Text);
+
+                            availableOvertime += (durationMinute + (durationHour * 60));
                             RefreshEntries();
                         }
                     } else
@@ -114,28 +108,35 @@ namespace OvertimeTracker {
                 var dateString = tbxTakeOvertimeDate.Text;
 
                 var durationHour = endTimeHour - startTimeHour;
-                double durationMinute = 0;
+                var durationMinute = durationHour * 60;
 
-                if (endTimeMinute < startTimeMinute) {
-                    durationMinute = startTimeMinute - endTimeMinute;
-                    durationMinute = 60 - durationMinute;
-                } else
-                    durationMinute = endTimeMinute - startTimeMinute;
-
-                if (durationMinute > 0 && durationMinute <= 30)
-                    durationMinute = 30;
-                else {
-                    durationHour++;
-                    durationMinute = 0;
-                }
+                if (startTimeMinute > endTimeMinute) {
+                    durationMinute += 60 - (startTimeMinute - endTimeMinute);
+                    durationMinute -= 60;
+                } else if (startTimeMinute < endTimeMinute)
+                    durationMinute += endTimeMinute - startTimeMinute;
+                else if (startTimeMinute == endTimeMinute)
+                    durationMinute += 0;
 
                 if (durationHour > 0 || durationMinute > 0) {
-                    lbxTakenOvertime.Items.Add(durationHour + "." + durationMinute + '\t' + tbxNewOvertimeDate.Text);
+                    durationHour = durationMinute / 60;
+                    if ((durationMinute % 60) <= 30)
+                        durationMinute = 30;
+                    else if ((durationMinute % 60) > 30) {
+                        durationHour++;
+                        durationMinute = 0;
+                    }
 
-                    availableOvertime -= (durationHour * 60) + durationMinute;
-                    RefreshEntries();
+                    if (availableOvertime >= (durationMinute + (durationHour * 60))) {
+
+                        lbxCurrentOvertime.Items.Add(durationHour + "." + durationMinute + '\t' + tbxNewOvertimeDate.Text);
+
+                        availableOvertime -= (durationMinute + (durationHour * 60));
+                        RefreshEntries();
+                    } else
+                        MessageBox.Show("Nicht genügend Ausgleich verfügbar.", "Hinweis", MessageBoxButtons.OK);
                 } else
-                    MessageBox.Show("Nicht ausreichend Ausgleich verfügbar.", "Hinweis", MessageBoxButtons.OK);
+                    MessageBox.Show("Der Ausgleich kann nicht eingetragen werden.", "Hinweis", MessageBoxButtons.OK);
             }
         }
 
